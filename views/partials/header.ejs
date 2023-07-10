@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>catch log</title>
+  </head>
+  <body>
+    <nav>
+      <% if (user) { %>
+      <a href="/catchlog/new">ADD CATCH</a>
+      <a href="/logout">LOG OUT</a>
+      <% } else { %>
+      <a href="/auth/google" class="login"
+        >LOG IN&nbsp;<img src="https://i.imgur.com/FHjYyi0.png"
+      /></a>
+      <% } %>
+
+      <a href="/catchlog">ALL CATCHES</a>
+    </nav>
+    <main>
+      <h1>Catch Log</h1>
+    </main>
+  </body>
+</html>
