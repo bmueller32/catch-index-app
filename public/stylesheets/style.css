@@ -1,3 +1,9 @@
+h1 {
+  position: fixed;
+  top: 1px;
+  left: 6px;
+}
+
 body {
   margin: 0;
   height: 100vh;
@@ -6,7 +12,6 @@ body {
   grid-template-areas:
     "nav"
     "main";
- 
 }
 
 body > nav {
