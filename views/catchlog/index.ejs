@@ -1,23 +1,20 @@
 <%- include('../partials/header') %>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<table id="list">
+  <thead>
+    <tr>
+      <th>Species</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% catchlog.forEach(function(c) { %>
+    <tr>
+      <td><%= c.species %></td>
+      <td><%= c.weight %></td>
+      <td><a href="/catchlog/<%= c._id %>">Catch Details</a></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
 <%- include('../partials/footer') %>

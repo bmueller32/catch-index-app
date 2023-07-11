@@ -9,7 +9,8 @@ router.get('/', catchlogCtrl.index),
 router.get('/new',catchlogCtrl.new);
 //GET /catchlog/:id (show) must be below new
 router.get('/:id', catchlogCtrl.show);
-
+// POST / catchlog
+router.post('/', catchlogCtrl.create)
 
 
 
