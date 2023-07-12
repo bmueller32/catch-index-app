@@ -5,14 +5,18 @@
     <tr>
       <th>Species</th>
       <th>Weight</th>
+      <th>Location</th>
     </tr>
   </thead>
   <tbody>
     <% catchlog.forEach(function(c) { %>
     <tr>
       <td><%= c.species %></td>
-      <td><%= c.weight %></td>
-      <td><a href="/catchlog/<%= c._id %>">Catch Details</a></td>
+      <td><%= c.weightlb %>lb <%= c.weightoz %>oz</td>
+      <td><%= c.location %></td>
+      <td>
+        <a id="catch-details" href="/catchlog/<%= c._id %>">Catch Details</a>
+      </td>
     </tr>
     <% }); %>
   </tbody>

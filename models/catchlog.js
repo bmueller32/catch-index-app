@@ -8,7 +8,8 @@ const Schema = mongoose.Schema;
 
 const catchSchema = new mongoose.Schema({
     species : {type: String, required: true},
-    weight : {type: Number, min: 0, max: 50},
+    weightlb : {type: Number, min: 0, max: 50},
+    weightoz: {type: Number, min: 0, max: 15},
     location : {type: String, required: true},
     lure: {type: String, required: true}, 
     date : {type: Date,

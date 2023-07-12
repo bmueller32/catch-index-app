@@ -4,14 +4,21 @@
   <label>Species:</label>
   <input type="text" name="species" />
   <label>Weight:</label>
-  <input type="text" name="weight" />
+  <div id="weight">
+    <input type="text" name="weightlb" />
+    <select name="weightoz">
+      <% for( let i = 0; i < 16; i++ ) { %>
+      <option value="<%= i %>"><%= i %></option>
+      <% } %>
+    </select>
+  </div>
   <label>Location:</label>
   <input type="text" name="location" />
   <label>Lure:</label>
   <input type="text" name="lure" />
   <label>Catch Date:</label>
   <input type="date" name="date" />
-  <input type="submit" value="Add Catch">
+  <input type="submit" value="Add Catch" />
 </form>
 
 <%- include('../partials/footer') %>

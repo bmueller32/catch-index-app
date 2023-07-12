@@ -1,4 +1,4 @@
-const CatchLog = require("../models/catchlog");
+const CatchlogModel = require("../models/catchlog");
 
 module.exports = {
   index,
@@ -8,22 +8,20 @@ module.exports = {
 };
 
 async function index(req, res) {
-  const catchlog = await CatchLog.find({});
+  const catchlog = await CatchlogModel.find({});
   console.log(catchlog);
   console.log(req.user);
   res.render("catchlog/index", { title: "All Catches", catchlog: catchlog });
 }
 
 async function show(req, res) {
-  console.log(req.user);
+  console.log("req.user");
 
   try {
     //find the catchlog
-    const catchlogFromTheDatabase = await CatchlogModel.findById(
-      req.params.id
-    ).exec();
+    const catchlogFromTheDatabase = await CatchlogModel.findById(req.params.id);
 
-    console.log(catchlogFromTheDatabase);
+    console.log("catch", catchlogFromTheDatabase);
 
     res.render("catchlog/show", {
       catchlog: catchlogFromTheDatabase,
@@ -39,6 +37,7 @@ function newCatch(req, res) {
 }
 
 async function create(req, res) {
+  console.log(req.body);
   try {
     const catchlogFromTheDatabase = await CatchlogModel.create(req.body); //await is waiting for the model to go to db and put contents of the form in the db and come back to the server
 

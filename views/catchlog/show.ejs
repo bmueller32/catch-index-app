@@ -1,25 +1,20 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
-    <div>Species:</div>
-    <div>
+    <div>Species:
         <%= catchlog.species %>
     </div>
-    <div>Weight:</div>
-    <div>
-        <%= catchlog.weight  %>
+    <div>Weight:
+        <%= catchlog.weightlb  %>lb <%= catchlog.weightoz  %>oz
     </div>
-    <div>Location:</div>
-    <div>
+    <div>Location:
         <%= catchlog.location  %>
     </div>
-    <div>Date:</div>
-    <div>
-        <%= catchlog.date %>
+    <div>Date:
+        <%= catchlog.date.toLocaleDateString() %>
     </div>
-    <div>Lure:</div>
-    <div>
-        <% catchlog.lure %>
+    <div>Lure:
+        <%= catchlog.lure %>
     </div>
 </section>
 
