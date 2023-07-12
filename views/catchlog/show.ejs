@@ -1,23 +1,67 @@
 <%- include('../partials/header') %>
-
+<!-- // Show page UI-->
 <section id="show-page">
-    <div>Species:
-        <%= catchlog.species %>
-    </div>
-    <div>Weight:
-        <%= catchlog.weightlb  %>lb <%= catchlog.weightoz  %>oz
-    </div>
-    <div>Location:
-        <%= catchlog.location  %>
-    </div>
-    <div>Date:
-        <%= catchlog.date.toLocaleDateString() %>
-    </div>
-    <div>Lure:
-        <%= catchlog.lure %>
-    </div>
+  <div>Species: <%= catchlog.species %></div>
+  <div>Weight: <%= catchlog.weightlb %>lb <%= catchlog.weightoz %>oz</div>
+  <div>Location: <%= catchlog.location %></div>
+  <div>Date: <%= catchlog.date.toLocaleDateString() %></div>
+  <div>Lure: <%= catchlog.lure %></div>
+
+  <form
+    action="/catchlog/<%= catchlog._id %>?_method=PUT"
+    method="POST"
+  >
+    <button type="submit">*</button>
+  </form>
 </section>
 
+<!-- //Comments UI-->
 
+<h5></h5>
+<% if (user) %>
+<form
+  id="add-comment-form"
+  method="POST"
+  action="/catchlog/<%= catchlog._id %>/comments"
+>
+  <textarea name="content"></textarea>
+  <input type="submit" value="Add Comment" />
+</form>
 
-<%- include('../partials/footer') %>
+<!-- // Create list of comments//comments Ui-->
+<br /><br />
+
+<% if (catchlog.comments.length) { %>
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+      <th>Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% catchlog.comments.forEach(function(c) { %>
+    <tr>
+      <td class="comment-user">
+        <img
+          alt="avatar"
+          src="<%= c.userAvatar  %>"
+          referrerpolicy="no-referrer"
+        />
+        <%= c.username %>
+      </td>
+      <td><%= c.createdAt.toLocaleDateString() %></td>
+      <td><%= c.content %></td>
+      <td>
+        <% if (user && user._id.equals(c.user)) { %>
+        <form action="/comments/<%= c._id %>?_method=DELETE" method="POST">
+          <button type="submit">x</button>
+        </form>
+        <% } %>
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>
+<% } else { %> <% } %> <%- include('../partials/footer') %>

@@ -120,7 +120,7 @@ table {
   text-align: center;
   margin: auto;
   width: 50%;
-  border: 3px solid rgb(0, 0, 0);
+ border: 3px solid rgb(0, 0, 0);
   padding: 10px;
   position:absolute;
   top:5em;
@@ -128,15 +128,17 @@ table {
   left:5em;
 }
 
-table thead th {
+/*table thead th {
   padding: 5px;
   border-bottom: 2px solid rgb(0, 0, 0) ;
 }
 
-table td {
+/*table td {
   padding: 10px;
   text-align: center;
-}
+  }*/
+
+
 #catch-details {
 color:black;
 }
@@ -194,3 +196,32 @@ color:black;
   
 }
 
+#add-comment-form {
+  font-size: 20px;
+  text-align: center;
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  position:absolute;
+  top:17em;
+  right:5em;
+  left:5em;
+
+}
+
+.comment-user {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: auto;
+  width: 50%;
+  padding: 10px;
+  position:absolute;
+  top:500em;
+  right:10em;
+  left:5em;
+}
+
+.review-user img {
+  border-radius: 50%;
+  height: 40px;
+}

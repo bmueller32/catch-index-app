@@ -10,8 +10,8 @@ const passport = require('passport');
 const methodOverride = require('method-override');
 
 const indexRouter = require('./routes/index');
-const catchlogRouter = require('./routes/catchlog')
-
+const catchlogRouter = require('./routes/catchlog');
+const commentsRouter = require('./routes/comments');
 // create the Express app
 const app = express();
 
@@ -52,8 +52,8 @@ app.use(function (req, res, next) {
 
 // mount all routes with appropriate base paths
 app.use('/', indexRouter);
-app.use('/catchlog', catchlogRouter)
-
+app.use('/catchlog', catchlogRouter);
+app.use('/', commentsRouter);
 // invalid request, send 404 page
 app.use(function(req, res) {
   res.status(404).send('Cant find that!');

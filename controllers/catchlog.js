@@ -5,6 +5,7 @@ module.exports = {
   show,
   new: newCatch,
   create,
+  update,
 };
 
 async function index(req, res) {
@@ -52,3 +53,27 @@ async function create(req, res) {
     res.render("catchlog/new", { errorMsg: err.message });
   }
 }
+
+async function update(req, res) {
+    try {
+      const catchlogDoc = await CatchlogModel.findOne({
+        "comments._id": req.params.id,
+        "comments.user": req.user._id,
+      });
+  
+      //if a user is not logged in then redirect
+      if (!catchlogDoc) return res.redirect("/catchlog");
+  
+      //remove comment from catchlog's catchlog comments array on db (.remove is a mongoose method)
+      catchlogDoc.comments.id(req.params.id);
+  
+      //mutated the catchlogDoc so tell the db to update the database
+      await catchlogDoc.save();
+  
+      //tell client to make a request to this route
+      res.redirect(`/catchlog/${catchlogDoc._id}`);
+    } catch (err) {
+      console.log(err);
+      res.json(err)
+    }
+  }
