@@ -1,3 +1,4 @@
+const catchlog = require("../models/catchlog");
 const CatchlogModel = require("../models/catchlog");
 
 module.exports = {
@@ -85,8 +86,13 @@ async function update(req, res) {
     //if a user is not logged in then redirect
     if (!catchlogDoc) return res.redirect("/catchlog");
 
-    // Update the date of the post
+    // Update the post
+    catchlogDoc.species = req.body.species;
+    catchlogDoc.weight = req.body.weight;
+    catchlogDoc.location = req.body.location,
     catchlogDoc.date = req.body.date;
+    catchlogDoc.lure = req.body.lure
+
 
     //mutated the catchlogDoc so tell the db to update the database
     await catchlogDoc.save();

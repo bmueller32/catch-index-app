@@ -1,18 +1,20 @@
 <%- include('../partials/header') %>
 <!-- // edit form UI-->
 <section id="edit-form">
-    <div>Species: <%= catchlog.species %></div>
-    <div>Weight: <%= catchlog.weightlb %>lb <%= catchlog.weightoz %>oz</div>
-    <div>Location: <%= catchlog.location %></div>
-    <div>Date: <%= catchlog.date.toLocaleDateString() %></div>
-    <div>Lure: <%= catchlog.lure %></div>
-  
-    <form
-      action="/catchlog/<%= catchlog._id %>?_method=PUT"
-      method="POST"
-    >
-    <input name="date" value="<%= catchlog.date.toLocaleDateString() %>">
-      <button id="update-post" type="submit">Update Post</button>
-    </form>
-  </section>
-  <%- include('../partials/footer') %>
+  <div>Species: <%= catchlog.species %></div>
+  <div>Weight: <%= catchlog.weightlb %>lb <%= catchlog.weightoz %>oz</div>
+  <div>Location: <%= catchlog.location %></div>
+  <div>Date: <%= catchlog.date.toLocaleDateString() %></div>
+  <div>Lure: <%= catchlog.lure %></div>
+
+  <form id="update-from" action="/catchlog/<%= catchlog._id %>?_method=PUT" method="POST">
+
+    <input name="species" value="<%= catchlog.species %>" />
+    <input name="weight" value="<%= catchlog.weightlb %>lb <%= catchlog.weightoz %>oz" />
+    <input name="location" value="<%= catchlog.location %>" />
+    <input name="date" value="<%= catchlog.date.toLocaleDateString() %>" />
+    <input name="lure" value="<%= catchlog.lure %>" />
+    <button id="update-post" type="submit">Update Post</button>
+  </form>
+</section>
+<%- include('../partials/footer') %>
