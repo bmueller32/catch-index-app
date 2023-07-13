@@ -59,15 +59,15 @@ async function create(req, res) {
 async function edit(req, res) {
     try {
       const catchlogDoc = await CatchlogModel.findOne({
-        "catchlog._id": req.params.id,
-        "catchlog.user": req.user._id,
+        "_id": req.params.id
+       
       });
   
       //if a user is not logged in then redirect
       if (!catchlogDoc) return res.redirect("/catchlog");
   
       //tell client to make a request to this route
-      res.render(`/catchlog/${catchlogDoc._id}`);
+      res.render("catchlog/editCatchlog",{catchlog:catchlogDoc}) ; //<-edit? or editCatchlog
     } catch (err) {
       console.log(err);
       res.json(err);
@@ -78,15 +78,12 @@ async function update(req, res) {
   console.log(req.body);
   try {
     const catchlogDoc = await CatchlogModel.findOne({
-      "catchlog._id": req.params.id,
-      "catchlog.user": req.user._id,
+      "_id": req.params.id,
+      
     });
 
     //if a user is not logged in then redirect
     if (!catchlogDoc) return res.redirect("/catchlog");
-
-    //find the catchlogDoc by using id
-    catchlogDoc.catchlog.id(req.params.id);
 
     // Update the date of the post
     catchlogDoc.date = req.body.date;
