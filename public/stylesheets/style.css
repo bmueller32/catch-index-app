@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
   height: 100vh;
@@ -68,19 +70,6 @@ body > nav > p {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
 
-/* main background
-body > main {
-  grid-area: main;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  padding: 20px;
-  overflow-y: scroll;
-  border: 0px solid rgba(100, 100, 100, 1);
-  border-radius: 24px;
-}*/
-
 /* error message*/
 body > main h1:first-child {
   margin-bottom: 50px;
@@ -114,38 +103,25 @@ nav > a:hover {
   height: 30px;
 }
 
-
 table {
   font-size: 20px;
   text-align: center;
   margin: auto;
   width: 50%;
- border: 3px solid rgb(0, 0, 0);
+  border: 3px solid rgb(0, 0, 0);
   padding: 10px;
-  position:absolute;
-  top:5em;
-  right:5em;
-  left:5em;
+  position: absolute;
+  top: 5em;
+  right: 5em;
+  left: 5em;
 }
-
-/*table thead th {
-  padding: 5px;
-  border-bottom: 2px solid rgb(0, 0, 0) ;
-}
-
-/*table td {
-  padding: 10px;
-  text-align: center;
-  }*/
-
 
 #catch-details {
-color:black;
+  color: black;
 }
 #catch-details:hover {
-  color: darkgrey;
+  color: rgb(19, 141, 212);
 }
-
 
 #new-form {
   display: grid;
@@ -157,10 +133,10 @@ color:black;
   margin: auto;
   width: 50%;
   padding: 10px;
-  position:absolute;
-  top:5em;
-  right:18em;
-  left:2em;
+  position: absolute;
+  top: 5em;
+  right: 18em;
+  left: 2em;
 }
 
 #new-form input[type="submit"] {
@@ -176,11 +152,10 @@ color:black;
   width: 50%;
   border: 3px solid rgb(0, 0, 0);
   padding: 10px;
-  position:absolute;
-  top:5em;
-  right:5em;
-  left:5em;
-
+  position: absolute;
+  top: 3em;
+  right: 5em;
+  left: 5em;
 }
 
 #show-page div {
@@ -189,11 +164,10 @@ color:black;
   margin: auto;
   width: 50%;
   padding: 10px;
-  position:static;
-  top:5em;
-  right:18em;
-  left:2em;
-  
+  position: static;
+  top: 5em;
+  right: 18em;
+  left: 2em;
 }
 
 #add-comment-form {
@@ -202,26 +176,47 @@ color:black;
   margin: auto;
   width: 50%;
   padding: 10px;
-  position:absolute;
-  top:17em;
-  right:5em;
-  left:5em;
-
+  position: absolute;
+  top: 17em;
+  right: 5em;
+  left: 5em;
 }
 
-.comment-user {
+#comments {
   font-size: 20px;
   text-align: center;
-  margin-bottom: auto;
+  margin: auto;
   width: 50%;
   padding: 10px;
-  position:absolute;
-  top:500em;
-  right:10em;
-  left:5em;
+  position: absolute;
+  top: 400px;
 }
 
-.review-user img {
+#comments img {
   border-radius: 50%;
   height: 40px;
+}
+
+textarea {
+  border-radius: 7px;
+}
+
+input {
+  border-radius: 5px;
+}
+
+select {
+  border-radius: 5px;
+}
+
+#delete-button {
+  color: red;
+}
+
+#add-comment {
+  border: radius 25%;
+}
+
+#add-catch {
+  background-color: rgb(114, 200, 211);
 }

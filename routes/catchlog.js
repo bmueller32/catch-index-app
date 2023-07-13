@@ -11,6 +11,8 @@ router.get('/new',catchlogCtrl.new);
 router.get('/:id', catchlogCtrl.show);
 // POST / catchlog
 router.post('/', catchlogCtrl.create);
+//Get /catchlog/:id/edit
+router.get('/:id/edit', catchlogCtrl.edit)
 //PUT /catchlog/:id
 router.put('/:id', catchlogCtrl.update);
 

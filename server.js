@@ -8,6 +8,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const methodOverride = require('method-override');
+const MongoStore = require('connect-mongo');
 
 const indexRouter = require('./routes/index');
 const catchlogRouter = require('./routes/catchlog');
@@ -26,18 +27,24 @@ require('./config/passport');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(methodOverride('_method'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(methodOverride('_method'));
+
 // mount the session middleware
 app.use(session({
+  store: MongoStore.create({
+    mongoUrl: process.env.DATABASE_URL
+  }),
   secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true
 }));
+
 
 app.use(passport.initialize());
 app.use(passport.session());

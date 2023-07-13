@@ -5,6 +5,7 @@ module.exports = {
   show,
   new: newCatch,
   create,
+  edit,
   update,
 };
 
@@ -54,26 +55,51 @@ async function create(req, res) {
   }
 }
 
-async function update(req, res) {
+
+async function edit(req, res) {
     try {
       const catchlogDoc = await CatchlogModel.findOne({
-        "comments._id": req.params.id,
-        "comments.user": req.user._id,
+        "catchlog._id": req.params.id,
+        "catchlog.user": req.user._id,
       });
   
       //if a user is not logged in then redirect
       if (!catchlogDoc) return res.redirect("/catchlog");
   
-      //remove comment from catchlog's catchlog comments array on db (.remove is a mongoose method)
-      catchlogDoc.comments.id(req.params.id);
-  
-      //mutated the catchlogDoc so tell the db to update the database
-      await catchlogDoc.save();
-  
       //tell client to make a request to this route
-      res.redirect(`/catchlog/${catchlogDoc._id}`);
+      res.render(`/catchlog/${catchlogDoc._id}`);
     } catch (err) {
       console.log(err);
-      res.json(err)
+      res.json(err);
     }
   }
+
+async function update(req, res) {
+  console.log(req.body);
+  try {
+    const catchlogDoc = await CatchlogModel.findOne({
+      "catchlog._id": req.params.id,
+      "catchlog.user": req.user._id,
+    });
+
+    //if a user is not logged in then redirect
+    if (!catchlogDoc) return res.redirect("/catchlog");
+
+    //find the catchlogDoc by using id
+    catchlogDoc.catchlog.id(req.params.id);
+
+    // Update the date of the post
+    catchlogDoc.date = req.body.date;
+
+    //mutated the catchlogDoc so tell the db to update the database
+    await catchlogDoc.save();
+
+    //tell client to make a request to this route
+    res.redirect(`/catchlog/${catchlogDoc._id}`);
+  } catch (err) {
+    console.log(err);
+    res.json(err);
+  }
+}
+
+
