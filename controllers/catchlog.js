@@ -1,6 +1,6 @@
 const catchlog = require("../models/catchlog");
 const CatchlogModel = require("../models/catchlog");
-
+//export all conroller functions
 module.exports = {
   index,
   show,
@@ -9,14 +9,14 @@ module.exports = {
   edit,
   update,
 };
-
+//retrieve all catches
 async function index(req, res) {
   const catchlog = await CatchlogModel.find({});
   console.log(catchlog);
   console.log(req.user);
   res.render("catchlog/index", { title: "All Catches", catchlog: catchlog });
 }
-
+//render all catchlogs from db
 async function show(req, res) {
   console.log("req.user");
 
@@ -33,12 +33,12 @@ async function show(req, res) {
     res.send(err);
   }
 }
-
+// render new catchlog form
 function newCatch(req, res) {
   // render an errorMsg if the create action fails
   res.render("catchlog/new", { title: "Add Catch", errorMsg: "" });
 }
-
+// create new catchlog in db from newcatch form
 async function create(req, res) {
   console.log(req.body);
   try {
@@ -74,7 +74,7 @@ async function edit(req, res) {
       res.json(err);
     }
   }
-
+//update catch
 async function update(req, res) {
   console.log(req.body);
   try {
